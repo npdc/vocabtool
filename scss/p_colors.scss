@@ -1,0 +1,15 @@
+$color-accent-1: #3b6daa;
+$color-accent-2: #b71f1c;
+$color-accent-3: #c6d7eb;
+$bg-color: #f8f8fe;
+$fg-color: #173e69;
+$border: solid 1px $color-accent-3;
+$border-radius: 5px;
+$table-head-bg: $color-accent-1;
+$table-head-fg-color: white;
+$table-stripe-bg: mix($color-accent-3,$bg-color, 50%);
+$border-menu: solid 1px transparentize($color-accent-1,0.5);
+$menu-bg-standard: transparentize($color-accent-3,0.35);
+$menu-bg-hover: $color-accent-3;
+$menu-bg-active: $color-accent-2;
+$menu-bg-mobile: rgb(227,235,245);

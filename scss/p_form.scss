@@ -1,0 +1,571 @@
+.edit {
+	.cols {display: block;}
+	&.detail .cols {
+		display: flex;
+	}
+	#mid .cols {
+		display: flex;
+	}
+	#left {
+		.line {
+			border-bottom: solid 1px $color-accent-1;
+			margin-top: -1px;
+		}
+		ul {
+			list-style: none;
+			padding: 0px;
+			overflow: auto;
+			margin-bottom: 0px;
+			margin-left: 5px;
+			li {
+				float: left;
+				margin-right: 5px;
+			}
+			a {
+				display: block;
+				background: $color-accent-3;
+				padding: 5px;
+				text-decoration: none;
+				border-radius: 5px 5px 0 0;
+				border: solid 1px $color-accent-3;
+				border-bottom-width: 0px;
+				margin-top: 2px;
+				margin-bottom: 1px;
+				&.disabled {
+					color: $color-accent-1;
+					background-color:$table-stripe-bg;
+				}
+				&.active {
+					background: $bg-color;
+					font-weight: bold;
+					border-color: $color-accent-1;
+					border-bottom: solid 1px $bg-color;
+					margin-bottom: 0px;
+				}
+			}
+		}
+	}
+	.datefield {
+		float: left;
+		margin-right: 5px;
+	}
+	.empty {
+		clear: both;
+	}
+	.multivalue {
+		&:not(.noAdd) {
+			tbody {
+				tr:last-child {
+					td:nth-child(2){
+						display: none;
+					}
+					td:nth-child(3){
+						cursor: pointer;
+					}
+				}
+				tr:not(:last-child) td:nth-child(3){
+					display: none;
+				}
+			}
+		}
+		&.noAdd td:last-child {
+			width: 225px;
+		}
+	}
+	.lookuptable, .multivalue{
+		thead tr:nth-child(n+2){
+			color: black;
+			font-weight: normal;
+			&:last-child {
+				border-bottom: solid 2px $color-accent-1;
+			}
+		}
+		&:not(.single) tbody {
+			tr:last-child td:nth-child(-n+2){
+				color: transparent;
+				cursor: default;
+			}
+			td {
+				text-align: center;
+				&:nth-child(-n+2){
+					width: 20px;
+					cursor: pointer;
+					border-right: solid 1px $menu-bg-mobile;
+				}
+				&:first-child{
+					cursor: move;
+				}
+			}
+		}
+		td.lookupwrapper{
+			position: relative;
+			.options {
+				font-size: 10pt;
+				position: absolute;
+				width: 100%;
+				width: calc(100% - 6px);
+				max-height: 500px;
+				overflow-y: auto;
+				background-color: white;
+				text-align: left;
+				box-sizing: border-box;
+				box-shadow: 0px 15px 20px -10px black;
+				z-index: 9998;
+				div {
+					padding: 2px 5px;
+					border: $border;
+					border-top: none;
+					&[id].optionHasFocus {
+						background-color: $color-accent-1;
+						color: white;
+						cursor: pointer;
+					}
+					&.hidden {
+						display: none;
+					}
+					&.notSelected {
+						color: silver;
+					}
+					&.clicked {
+						font-weight: bold;
+					}
+				}
+				&.above {
+					box-shadow: 0px -5px 20px 0px black;
+					position: absolute;
+					border-bottom: $border;
+				}
+
+			}
+		}
+	}
+	.multitext {
+		.values{
+			span {
+				background-color: $color-accent-3;
+				padding: 5px;
+				padding-right: 0px;
+				border-radius: 5px;
+				white-space: nowrap;
+				margin-bottom: 5px;
+				margin-right: 5px;
+				display: block;
+				float:left;
+				&.delete {
+					display: inline;
+					float: none;
+					padding-right: 5px;
+					padding-left: 10px;
+					color: $color-accent-2;
+					font-weight: bold;
+					cursor: pointer;
+				}
+			}
+		}
+		input, button {
+			padding-top: 1px;
+			padding-bottom: 1px;
+			
+		}
+		input[type=text]{
+			border-right-width: 52px;
+		}
+		button {
+			width: 50px;
+			margin-left: -51px;
+			margin-top: 1px;
+			border: none;
+			height: 26px;
+			border-top-left-radius: 0px;
+			border-bottom-left-radius: 0px;
+		}
+	}
+	.suggestions {
+		list-style: none;
+		padding: 0px;
+		font-size: 80%;
+		margin-top: 0px;
+		li {
+			border: solid 1px $color-accent-3;
+			border-top-width: 0px;
+			background: mix(white,$bg-color, 50%);
+			padding: 5px;
+			cursor: pointer;
+			&:first-child{
+				background: $color-accent-1;
+				color: white;
+				font-weight: bold;
+				border-color: $color-accent-1;
+				font-style: italic;
+			}
+			&:not(:first-child):hover{
+				background-color: $table-stripe-bg;
+			}
+		}
+	}
+}
+
+#statusChanges {
+	& > div {
+		border-bottom: solid 1px $color-accent-1;
+		font-weight: bold;
+		font-size: 80%;
+		& > div {
+			font-weight: normal;
+		}
+	}
+	span {
+		font-size: 80%;
+		font-style: italic;
+		display: block;
+		&:not(.noChanges){
+			cursor: pointer;
+		}
+		span:first-child:before {
+			content: '\25BC';
+		}
+		span:last-child:before {
+			content: '\25B2';
+		}
+	}
+	&:not(.all) {
+		span span:last-child {
+			display: none;
+		}
+		div:not(:first-child){
+			display: none;
+		}
+	}
+	&.all {
+		span span:first-child {
+			display: none;
+		}	
+	}
+}
+
+input, button, textarea, select:not([multiple]) {
+	height: 28px;
+	box-sizing: border-box;
+	margin: 0px;
+	border-radius: 2px;
+	-webkit-appearance: none;
+	border: solid 1px $color-accent-3;
+	outline: none;
+	font-family: inherit;
+	font-size: 14px;
+	&:focus, &:hover:not(:disabled) {
+		border-color: $color-accent-1;
+	}
+}
+
+textarea {
+	height: auto;
+	resize: vertical;
+	vertical-align: top;
+}
+
+input[type=submit],input[type=reset], button{
+	cursor: pointer;
+	background-color: $color-accent-1;
+	color: white;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	border-color: $color-accent-1;
+	&:disabled, &.disabled {
+		background-color: $table-stripe-bg;
+		border-color: $color-accent-3;
+		color: $color-accent-3;
+	}
+	&:hover {
+		color: $color-accent-3;
+	}
+	&:active {
+		border-color: $color-accent-3;
+	}
+}
+
+input[type=text], input[type=password], input[type=file], textarea, select{
+	background-color: white;
+	width: 100%;
+	padding-left: 3px;
+	&[readonly=readonly], &:disabled {
+		background-color: $table-stripe-bg;
+	}
+}
+
+.select2-results__option[aria-selected=true] {
+	font-weight: bold;
+}
+
+select:not([multiple]), .select2-selection--multiple{
+	background: url('../img/select.png') right 5px center no-repeat white;
+	padding-right: 20px;
+	padding-left: 1px;
+}
+
+input[type=checkbox]{
+	display: none;
+	&+label {
+		background: url('../img/checkbox.png') no-repeat left center;
+		padding-left: 20px;
+		cursor: pointer;
+		&:hover, td:hover & {
+			background-image: url('../img/checkbox-hover.png');
+		}
+	}
+	&:not(:disabled):checked+label {
+		background-image: url('../img/checkbox-checked.png');
+		&:hover, td:hover & {
+			background-image: url('../img/checkbox-checked-hover.png');
+		}
+	}
+	&:disabled+label {
+		background-image: url('../img/checkbox-disabled.png');
+		&:hover, td:hover & {
+			background-image: url('../img/checkbox-disabled-hover.png');
+		}
+	}
+	&:disabled:checked+label {
+		background-image: url('../img/checkbox-checked-disabled.png');
+		&:hover, td:hover & {
+			background-image: url('../img/checkbox-checked-disabled-hover.png');
+		}
+	}
+}
+
+input[type=radio]{
+	display: none;
+	&+label {
+		background: url('../img/radio.png') no-repeat left center;
+		padding-left: 20px;
+		&:hover, td:hover & {
+			background-image: url('../img/radio-hover.png');
+		}
+	}
+	&:not(:disabled):checked+label {
+		background-image: url('../img/radio-checked.png');
+		&:hover, td:hover & {
+			background-image: url('../img/radio-checked-hover.png');
+		}
+	}
+	&:disabled+label {
+		background-image: url('../img/radio-disabled.png');
+		&:hover, td:hover & {
+			background-image: url('../img/radio-disabled-hover.png');
+		}
+	}
+	&:disabled:checked+label {
+		background-image: url('../img/radio-checked-disabled.png');
+		&:hover, td:hover & {
+			background-image: url('../img/radio-checked-disabled-hover.png');
+		}
+	}
+}
+
+input.readablepassword {
+	border-right-width: 100px;
+}
+
+button.readablepassword {
+	width: 98px;
+	margin-left: -99px;
+	margin-top: 1px;
+	border: none;
+	height: 26px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+select {
+	padding-left: initial;
+}
+
+option {
+	border-bottom: dashed 1px $color-accent-3;
+	white-space: normal;
+	padding-left: 23px;
+	text-indent: -20px;
+}
+
+fieldset {
+	clear: both;
+	margin: 0px;
+	margin-top: 5px;
+	border: solid 1px $color-accent-3;
+	border-radius: 3px;
+	&.error{
+		border-color: red;
+		& > legend {
+			color: red;
+		}
+	}
+	&.new {
+		border-style: dashed;
+	}
+}
+
+.datefield {
+	.sublabel{
+		display: inline-block;
+		width: 40px;
+		&:after {
+			content: ': ';
+		}
+	}
+	input[type=text]{
+		width: auto;
+		width: 100px;
+	}
+}
+
+
+.label, legend {
+	font-weight: bold;
+	display: block;
+	margin-top: 5px;
+	clear: both;
+	&:after {
+		content: ':';
+	}
+	&.empty:after {
+		content: '';
+	}
+}
+
+.hint {
+	font-size: 90%;
+	font-style: italic;
+	display: block;
+	&.inline {
+		margin-left: 5px;
+	}
+	a:link {
+		display: initial;
+		text-decoration: underline;
+	}
+}
+
+.counter{
+	font-size: 80%;
+	font-style: italic;
+}
+
+#adminoverrule {
+	border: solid 1px mix($color-accent-2, $bg-color, 50%);
+	padding: 5px 10px;
+}
+
+.errors {
+	border: solid 2px $color-accent-2;
+	color: $color-accent-2;
+	padding: 2px;
+	margin-bottom: 5px;
+}
+
+.map {
+	margin-top: 5px;
+	.hint {
+		display: block;
+	}
+	.label {
+		width: 200px;
+		display: inline-block;
+	}
+	select, input[type=text] {
+		max-width: calc(100% - 200px);
+		margin-bottom: 3px;
+		&.number_with_unit {
+			max-width: calc(100% - 305px);
+		}
+	}
+	> div:not(.mapContainer) {
+		max-width: calc(100% - 310px);
+	}
+	div.cols {
+		display: inline-flex;
+		width: calc(100% - 200px);
+		clear: none;
+	}
+	.mapContainer{
+		margin-left: 10px;
+		width: 300px;
+		height: 300px;
+		border: solid 1px $color-accent-3;
+		float: right;
+		box-sizing: border-box;
+	}
+}
+
+input.number_with_unit{
+	max-width: calc(100% - 105px);
+}
+
+select.number_with_unit {
+	margin-left: 5px;
+	padding-left: 10px;
+	width: 100px;
+}
+
+form > fieldset {
+	
+	fieldset {
+		margin-right: 25px;
+	}
+	.btn_add {
+		margin-right: 25px;
+	}
+}
+
+.btn_add {
+	float: right;
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+.btn_delete {
+	float: right;
+	margin-top: -30px;
+	margin-bottom: 5px;
+	background-color: $color-accent-2;
+}
+
+hr.afterbutton {
+	clear: both;
+	margin-bottom: 10px;
+	border: 0;
+	height: 1px;
+	background-color: $color-accent-1;
+}
+
+span.error {
+	color: red;
+	:not(.select2) &:not(.label){
+		font-style:italic;
+		font-weight: bold;
+		font-size: 90%;
+		.select2 &{
+			font-size: 100%;
+			font-weight: normal;
+			font-style: normal;
+			border-color: red;
+			border-width: 2px;
+			& .select2-selection__placeholder{
+				font-weight: bold;
+				color:#f66;
+			}
+		}
+	}
+}
+
+div.error.head {
+	color: red;
+	font-weight: bold;
+	clear: left;
+}
+
+input.error, textarea.error, select.error {
+	border-color: red;
+	border-width: 2px;
+}

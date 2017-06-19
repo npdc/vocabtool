@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vocab term selector demo</title>
+		<script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+		<script type="text/javascript" src="js.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.min.css" />
+	</head>
+	<body class="edit">
+		<div id="overlay"><div class="inner"></div></div>
+		<div id="page">
+			<div id="main">
+				<h1>Vocab term selector demo</h1>
+
+				<p>Terms can be selected in 2 ways:</p>
+				<ol>
+					<li>Stepped selection
+						<ul>
+							<li>Select a term by either clicking it or select it using the arrows and tab or enter</li>
+							<li>If the term has children these will be shown</li>
+							<li>When reaching a term without children or clicking the same term twice the term will be selected</li>
+						</ul>
+					</li>
+					<li>Searching
+						<ul>
+							<li>Type a text in the box</li>
+							<li>All terms containing the text will be displayed</li>
+							<li>Clicking a term or selecting it using the arrows and tab or enter selects the value</li>
+						</ul>
+					</li>
+				</ol>
+				<form method="post" onsubmit="npdc.alert('This is a demo only. Submitting this form is not allowed');return false;">
+				<table class="lookuptable" data-base-url="/npdc_dev" data-source-field="science_keywords_keyword" data-target-field="science_keywords_keyword_id" data-lookup-url="science_keyword" data-sortable="false" data-n-label="3">
+					<colgroup><col><col><col><col></colgroup>
+					<thead>
+						<tr>
+							<td colspan="1"></td>
+							<td>Keyword*</td>
+							<td>Detailed keyword</td>
+						</tr>
+						<tr>
+							<td colspan="1"></td>
+							<td><span class="hint "> </span></td>
+							<td><span class="hint "> </span></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="science_keywords_row_new">
+							<td colspan="1" style="display: none;">≡</td>
+							<td>x</td>
+							<input type="hidden" name="science_keywords_id_new" value=""><input type="hidden" name="science_keywords_keyword_id_new" value="">
+							<td class="lookupwrapper"><input type="text" name="science_keywords_keyword_new" placeholder="Click here to load the option list or start typing to search for a keyword" class="" autocomplete="off"></td>
+							<td><input type="text" name="science_keywords_detailed_variable_new" data-field-type="text" placeholder="Free text" value="" class=""></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="1"></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tfoot>
+				</table>
+				<input type="submit" class="disabled" style="display:none"/>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
